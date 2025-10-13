@@ -1,0 +1,56 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  background-color: #e0e0e0;
+  width: 100vw;
+}
+
+.logo-image{
+  width: 150px;
+  height: 75px;
+  display: flex;
+}
+
+.home-title {
+  font-size: 3rem;
+  color: #333;
+}
+
+.home-description {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #666;
+  max-width: 600px;
+}
+
+.configurator-link {
+  padding: 1rem 2rem;
+  background-color: #0070f3;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+}
+
+.configurator-link:hover {
+  background-color: #005bb5;
+  box-shadow: 0 6px 20px 0 rgba(0, 118, 255, 0.23);
+}
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2.5rem;
+  }
+
+  .home-description {
+    font-size: 1rem;
+  }
+}
