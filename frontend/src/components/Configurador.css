@@ -1,0 +1,33 @@
+.configurador-container {
+  display: flex;
+  height: 100vh;
+}
+
+.configurador-container label {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 4px;
+  border: 1px solid rgb(187, 187, 187);
+  height: 30px;
+  align-items: center;
+  padding-left: 5px;
+}
+
+.configurador-container label input {
+  height: 30px;
+  border-radius: 4px;
+  outline: none;
+  border: none;
+}
+
+.panel-lateral {
+  width: 300px;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  color: black;
+}
+
+.visualizacion-3d {
+  flex-grow: 1;
+}
+
