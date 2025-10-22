@@ -5,6 +5,11 @@ import { useDrag } from "@use-gesture/react";
 import "./Configurador.css";
 import { useConfigurador } from "./useConfigurador";
 import { useState, useEffect } from "react";
+import { FaTrash } from "react-icons/fa";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
+import { RiWindowsLine } from "react-icons/ri";
+import { BsDoorOpenFill } from "react-icons/bs";
 
 const Draggable = ({ children, onDrag, initialPosition = [0, 0, 0], onClick, rotation = [0, 0, 0] }) => {
   const [pos, setPos] = useState(initialPosition);
@@ -101,13 +106,25 @@ function Configurador() {
     setSelectedOpening,
     addOpening,
     handleOpeningPositionChange,
-    removeOpening
+    removeOpening,
   } = useConfigurador();
+  const [openingsOpenState, setOpeningsOpenState] = useState({});
+
+  const toggleOpening = (openingId) => {
+    setOpeningsOpenState(prevState => ({
+      ...prevState,
+      [openingId]: !prevState[openingId]
+    }));
+  };
 
   return (
     <div className="configurador-container">
       {/* Panel lateral */}
       <div className="panel-lateral">
+        <div style={{ width:'100%', display:'flex', justifyContent:'center', gap:'5px', marginBottom:'62px', marginTop:'12px'}}>
+          <img style={{width:'90px', height:'50px'}} src="assets/images/cropped-2-e1745241876834.webp" alt="" />
+          <p>view</p>
+        </div>
         <h2>Medidas del espacio</h2>
         <label>
           Ancho (cm):
@@ -134,46 +151,68 @@ function Configurador() {
         </ul>
 
         <h2>Aberturas</h2>
-        <button onClick={() => addOpening('door')}>Añadir Puerta</button>
-        <button onClick={() => addOpening('window')}>Añadir Ventana</button>
+        <div style={{width:'100%', display:'flex', justifyContent:'center', gap:'12px'}}>
+          <button onClick={() => addOpening('door')}><BsDoorOpenFill /></button>
+          <button onClick={() => addOpening('window')}><RiWindowsLine /></button>
+
+        </div>
 
         {openings.map(opening => (
-          <div key={opening.id} className={selectedOpening?.id === opening.id ? 'opening-controls selected' : 'opening-controls'}>
-            <h3 onClick={() => setSelectedOpening(opening)}>{opening.type === 'door' ? 'Puerta' : 'Ventana'} {opening.id}</h3>
-            <label>
-              Pared:
-              <select name="pared" value={opening.pared} onChange={(e) => handleOpeningPositionChange(e, opening.id)}>
-                <option value="frontal">Frontal</option>
-                <option value="trasera">Trasera</option>
-                <option value="izquierda">Izquierda</option>
-                <option value="derecha">Derecha</option>
-              </select>
-            </label>
-            <br />
-            <label>
-              Distancia desde la pared (cm):
-              <input 
-                type="number" 
-                name="distanciaDesdePared" 
-                value={opening.distanciaDesdePared} 
-                onChange={(e) => handleOpeningPositionChange(e, opening.id)} 
-              />
-            </label>
-            {opening.type !== 'door' && (
-              <>
-                <br />
-                <label>
-                  Distancia desde el suelo (cm):
-                  <input 
-                    type="number" 
-                    name="distanciaDesdeSuelo" 
-                    value={opening.distanciaDesdeSuelo} 
-                    onChange={(e) => handleOpeningPositionChange(e, opening.id)} 
-                  />
-                </label>
-              </>
-            )}
-            <button onClick={() => removeOpening(opening.id)}>Remover</button>
+          <div className="openings-control-container" key={opening.id}>
+            <div style={{cursor:'pointer', display:'flex', justifyContent:'space-between', alignItems:'center'}} onClick={() => toggleOpening(opening.id)}>
+            <h3 style={{margin:'0'}} onClick={(e) => {e.stopPropagation(); setSelectedOpening(opening)}}>{opening.type === 'door' ? 'Puerta' : 'Ventana'} {opening.displayId}</h3>
+              {openingsOpenState[opening.id] ? <IoIosArrowUp /> : <IoIosArrowDown /> }
+            </div>
+          {openingsOpenState[opening.id] && (
+            <div className={selectedOpening?.id === opening.id ? 'opening-controls selected' : 'opening-controls'}>
+              <label>
+                Pared:
+                <select name="pared" value={opening.pared} onChange={(e) => handleOpeningPositionChange(e, opening.id)}>
+                  <option value="frontal">Frontal</option>
+                  <option value="trasera">Trasera</option>
+                  <option value="izquierda">Izquierda</option>
+                  <option value="derecha">Derecha</option>
+                </select>
+              </label>
+              <div style={{width:'100%', height:'1px', backgroundColor:'#bbbbbb', marginTop:'14px'}}></div>
+              <br />
+              <label>
+                Distancia desde la pared (cm):
+                <input 
+                  type="number" 
+                  name="distanciaDesdePared" 
+                  value={opening.distanciaDesdePared} 
+                  onChange={(e) => handleOpeningPositionChange(e, opening.id)} 
+                />
+              </label>
+                            <div style={{width:'100%', height:'1px', backgroundColor:'#bbbbbb', marginTop:'14px'}}></div>
+
+              {opening.type !== 'door' && (
+                <>
+                  <br />
+                  <label>
+                    Distancia desde el suelo (cm):
+                    <input 
+                      type="number" 
+                      name="distanciaDesdeSuelo" 
+                      value={opening.distanciaDesdeSuelo} 
+                      onChange={(e) => handleOpeningPositionChange(e, opening.id)} 
+                    />
+                  </label>
+                                              <div style={{width:'100%', height:'1px', backgroundColor:'#bbbbbb', marginTop:'14px'}}></div>
+
+                </>
+              )}
+              <div style={{display:'flex', justifyContent:'end', marginTop:'10px'}}>
+                <button onClick={() => removeOpening(opening.id)}>
+                  <FaTrash />
+                </button>
+
+              </div>
+            </div>
+
+          )}
+
           </div>
         ))}
       </div>

@@ -5,6 +5,7 @@ export const useConfigurador = () => {
   const [espacio, setEspacio] = useState({ ancho: 300, largo: 300, alto: 250 });
   const [openings, setOpenings] = useState([]);
   const [selectedOpening, setSelectedOpening] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const fetchModulos = async () => {
@@ -31,8 +32,10 @@ export const useConfigurador = () => {
   };
 
   const addOpening = (type) => {
+    const countOfType = openings.filter(o => o.type === type).length;
     const newOpening = {
-      id: Date.now(),
+      id: crypto.randomUUID(),
+      displayId: countOfType + 1,
       type,
       position: [espacio.ancho / 2, type === 'door' ? 100 : 120, 0],
       args: type === 'door' ? [80, 200, 5] : [100, 80, 5],
@@ -87,6 +90,8 @@ export const useConfigurador = () => {
     setSelectedOpening,
     addOpening,
     handleOpeningPositionChange,
-    removeOpening
+    removeOpening,
+    isOpen,
+    setIsOpen,
   };
 };

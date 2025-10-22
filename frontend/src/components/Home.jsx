@@ -6,7 +6,7 @@ export default function Home() {
     <div className="home-container">
         <div style={{display:'flex', justifyContent:'center', alignItems:'center', gap:'10px'}}>
             <img src="/assets/images/cropped-2-e1745241876834.webp" alt="" className="logo-image"/>
-            <h1 className="home-title">3D – Optimiza tu ambiente</h1>
+            <h1 className="home-title">View</h1>
 
         </div>
       <p className="home-description">
