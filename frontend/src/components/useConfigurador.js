@@ -40,7 +40,7 @@ export const useConfigurador = () => {
       position: [espacio.ancho / 2, type === 'door' ? 100 : 120, 0],
       args: type === 'door' ? [80, 200, 5] : [100, 80, 5],
       distanciaDesdePared: espacio.ancho / 2,
-      distanciaDesdeSuelo: type === 'door' ? 0 : 120,
+      distanciaDesdeSuelo: type === 'door' ? 0 : 80,
       pared: 'frontal',
       rotation: [0, 0, 0]
     };

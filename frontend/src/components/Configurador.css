@@ -3,6 +3,17 @@
   height: 100vh;
 }
 
+button {
+    background-color: #0070f3;
+  box-shadow: 0 4px 14px 0 rgba(0, 118, 255, 0.39);
+
+}
+
+button:hover {
+    background-color: #005bb5;
+
+}
+
 .configurador-container label {
   display: flex;
   justify-content: space-between;
