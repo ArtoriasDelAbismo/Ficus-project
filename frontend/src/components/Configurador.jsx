@@ -20,6 +20,7 @@ const Draggable = ({
   wall,
   espacio,
   rotation = [0, 0, 0],
+  size = [50, 50, 50],
 }) => {
   const { camera } = useThree();
   const [pos, setPos] = useState(initialPosition);
@@ -89,6 +90,20 @@ const Draggable = ({
         else if (wallRef.current === "front") newZ = 0;
         else if (wallRef.current === "back" && espacio) newZ = espacio.largo;
       }
+
+      const [width, height, depth] = size;
+      newX = Math.max(
+        width / 2,
+        Math.min(newX, espacio.ancho - width / 2)
+      );
+      newY = Math.max(
+        height / 2,
+        Math.min(newY, espacio.alto - height / 2)
+      );
+      newZ = Math.max(
+        depth / 2,
+        Math.min(newZ, espacio.largo - depth / 2)
+      );
 
       const newPos = [newX, newY, newZ];
       setPos(newPos);
@@ -228,6 +243,7 @@ const Scene = memo(
             setIsDragging={setIsDragging}
             wall={modulo.wall}
             espacio={espacio}
+            size={[modulo.ancho, modulo.alto, modulo.profundidad]}
           >
             <Box args={[modulo.ancho, modulo.alto, modulo.profundidad]}>
               <meshStandardMaterial color="white" />
@@ -246,6 +262,7 @@ const Scene = memo(
             rotation={getRotationFromWall(opening.pared)}
             espacio={espacio}
             wall={wallMapping[opening.pared]}
+            size={opening.args}
           >
             <Box args={opening.args}>
               <meshStandardMaterial
