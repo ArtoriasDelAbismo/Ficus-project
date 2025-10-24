@@ -1,6 +1,6 @@
 import { memo, useState, useRef, useEffect } from "react";
 import { Canvas, useThree } from "@react-three/fiber";
-import { OrbitControls, Box } from "@react-three/drei";
+import { OrbitControls, Box, Edges } from "@react-three/drei";
 import { useDrag } from "@use-gesture/react";
 import * as THREE from "three";
 import "./Configurador.css";
@@ -247,6 +247,7 @@ const Scene = memo(
           >
             <Box args={[modulo.ancho, modulo.alto, modulo.profundidad]}>
               <meshStandardMaterial color="white" />
+              <Edges />
             </Box>
           </Draggable>
         ))}
