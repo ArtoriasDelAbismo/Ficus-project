@@ -24,7 +24,7 @@ export const useConfigurador = () => {
     if (selectedOpening) {
       setSelectedOpening(openings.find(o => o.id === selectedOpening.id));
     }
-  }, [openings, selectedOpening]);
+  }, [openings]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
