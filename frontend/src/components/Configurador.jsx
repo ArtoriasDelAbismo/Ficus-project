@@ -39,74 +39,86 @@ function Configurador() {
         <div
           className="flex-center"
           style={{
-            gap: "5px",
-            marginBottom: "62px",
-            marginTop: "12px",
+            fontSize:'4rem',
           }}
         >
-          <img
-            style={{ width: "90px", height: "50px" }}
-            src="assets/images/cropped-2-e1745241876834.webp"
-            alt=""
-          />
-          <p>view</p>
+
+          <p>Ficus view</p>
         </div>
 
+        <div className="sidebar-container">
         <h2>Medidas del espacio</h2>
-        <label>
-          Ancho (cm):
-          <input
-            type="number"
-            name="ancho"
-            value={espacio.ancho}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Largo (cm):
-          <input
-            type="number"
-            name="largo"
-            value={espacio.largo}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Alto (cm):
-          <input
-            type="number"
-            name="alto"
-            value={espacio.alto}
-            onChange={handleInputChange}
-          />
-        </label>
+          <label>
+            Ancho (cm):
+            <input
+              type="number"
+              name="ancho"
+              value={espacio.ancho}
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            Largo (cm):
+            <input
+              type="number"
+              name="largo"
+              value={espacio.largo}
+              onChange={handleInputChange}
+            />
+          </label>
+          <br />
+          <label>
+            Alto (cm):
+            <input
+              type="number"
+              name="alto"
+              value={espacio.alto}
+              onChange={handleInputChange}
+            />
+          </label>
 
+        </div>
+
+        <div className="sidebar-container">
         <h2>Módulos disponibles</h2>
-        <ul>
-          {modulos.map((modulo) => (
-            <li key={modulo.id}>
-              {modulo.id} - {modulo.tipo} ({modulo.ancho}x{modulo.alto}x
-              {modulo.profundidad})
-            </li>
-          ))}
-        </ul>
+          <ul className="modulos-disp-section">
+            {modulos.map((modulo) => (
+              <li style={{listStyle:'none'}} key={modulo.id}>
+                <img 
+                style={{borderRadius:'8px'}}
+                  src={modulo.imagen} 
+                  alt={modulo.tipo}
+                  width="100"
+                  height="100" 
+                />
+                <span>
+                  {modulo.tipo} ({modulo.ancho}x{modulo.alto}x
+                  {modulo.profundidad})
+                
+                </span>  
 
-        <h2>Aberturas</h2>
+              </li>
+
+            ))}
+          </ul>
+
+        </div>
+
         <div
-          className="flex-center"
-          style={{
-            width: "100%",
-            gap: "12px",
-          }}
-        >
-          <button onClick={() => addOpening("door")}>
-            <BsDoorOpenFill />
-          </button>
-          <button onClick={() => addOpening("window")}>
-            <RiWindowsLine />
-          </button>
+          className="sidebar-container"
+          style={{justifyContent:'center', display:'flex', flexDirection:'column', alignItems:'center'}}
+          >
+          <h2>Aberturas</h2>
+          <div style={{display:'flex', gap:'12px'}}>
+            <button onClick={() => addOpening("door")}>
+              <BsDoorOpenFill />
+            </button>
+            <button onClick={() => addOpening("window")}>
+              <RiWindowsLine />
+            </button>
+
+          </div>
         </div>
 
         {openings.map((opening) => (

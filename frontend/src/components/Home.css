@@ -1,3 +1,10 @@
+    @font-face {
+        font-family: 'AU-font'; 
+        src: url('../assets/fonts/AdventuresUnlimited-ScriptBold.ttf') format('truetype'); 
+        font-weight: normal; 
+        font-style: normal; 
+    }
+
 .home-container {
   display: flex;
   flex-direction: column;
@@ -5,20 +12,15 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
-  padding: 2rem;
   background-color: #e0e0e0;
   width: 100vw;
 }
 
-.logo-image{
-  width: 150px;
-  height: 75px;
-  display: flex;
-}
-
 .home-title {
-  font-size: 3rem;
+  font-size: 6rem;
   color: #333;
+  font-family: 'AU-font';
+  margin: 0;
 }
 
 .home-description {

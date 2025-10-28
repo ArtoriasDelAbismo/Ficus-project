@@ -1,3 +1,4 @@
+
 export const modulos = [
   {
     id: "A60",
@@ -7,6 +8,7 @@ export const modulos = [
     profundidad: 40,
     colores: ["blanco", "roble", "gris"],
     materiales: ["melamina", "MDF"],
+    imagen: 'http://localhost:3000/assets/images/AL.png'
   },
   {
     id: "BM120",
@@ -16,6 +18,7 @@ export const modulos = [
     profundidad: 60,
     colores: ["blanco", "gris"],
     materiales: ["melamina", "MDF"],
+    imagen: 'http://localhost:3000/assets/images/BM.png'
 
   }
 ];
