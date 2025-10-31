@@ -2,7 +2,7 @@
 export const modulos = [
   {
     id: "A60",
-    tipo: "alacena",
+    tipo: "Alacena",
     ancho: 120,
     alto: 60,
     profundidad: 40,
@@ -12,7 +12,7 @@ export const modulos = [
   },
   {
     id: "BM120",
-    tipo: "bajomesada",
+    tipo: "Bajomesada",
     ancho: 120,
     alto: 90,
     profundidad: 60,

@@ -4,7 +4,7 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="home-container">
-      <div>
+      <div className="home-sign" style={{height:'282px'}}>
         <h1 className="home-title">Ficus View</h1>
 
         <p className="home-description">

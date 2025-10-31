@@ -12,13 +12,24 @@
   justify-content: center;
   height: 100vh;
   text-align: center;
-  background-color: #e0e0e0;
+  background-image: linear-gradient(rgba(58, 58, 58, 0.3), rgba(0, 0, 0, 0.3)), url('../../public/assets/images/cocinabg.jpg');
+  background-size: cover;
+  background-position: center;
   width: 100vw;
 }
 
+.home-sign {
+  background: rgba(255, 255, 255, 0.3); /* white with 30% opacity */
+  backdrop-filter: blur(3px); /* frosted glass effect */
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+
+
 .home-title {
   font-size: 6rem;
-  color: #333;
+  color: #ffffff;
   font-family: 'AU-font';
   margin: 0;
 }
@@ -26,7 +37,7 @@
 .home-description {
   font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: #666;
+  color: #ffffff;
   max-width: 600px;
 }
 
