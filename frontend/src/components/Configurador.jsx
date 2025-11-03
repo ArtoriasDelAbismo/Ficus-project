@@ -105,7 +105,7 @@ function Configurador() {
   return (
     <div className="configurador-container">
       {/* Panel lateral */}
-      <div style={{cursor:'pointer', padding:'16px', height:'fit-content', position:'absolute', zIndex:'1000'}} onClick={() => setSideBarOpen(!sideBarOpen)}>
+      <div style={{cursor:'pointer', padding:'16px', height:'fit-content', position:'absolute', zIndex:'2000'}} onClick={() => setSideBarOpen(!sideBarOpen)}>
         
           {sideBarOpen ? <LuPanelRightOpen style={{height:'30px', width:'30px', color:'#a8a8a8'}}/> : <LuPanelLeftOpen style={{height:'30px', width:'30px'}}/>}
 
@@ -118,7 +118,7 @@ function Configurador() {
                 fontSize: "4rem",
               }}
             >
-              <p>Ficus view</p>
+              <p style={{margin:'20px'}}>Ficus view</p>
             </div>
             <div className="sidebar-container">
               <h2>Medidas del espacio</h2>
@@ -153,81 +153,7 @@ function Configurador() {
               </label>
             </div>
 
-            <div className="sidebar-container">
-              <h2>Módulos disponibles</h2>
-              <Swiper
-                modules={[Navigation, Pagination]}
-                spaceBetween={10}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                className="modulos-carousel"
-              >
-                {availableModules.map((modulo) => (
-                  <SwiperSlide key={modulo.id}>
-                    <div className="module-slide-content">
-                      <img
-                        style={{ borderRadius: "8px" }}
-                        src={modulo.imagen}
-                        alt={modulo.tipo}
-                        width="100"
-                        height="100"
-                      />
-                      <span>
-                        {modulo.tipo} ({modulo.ancho}x{modulo.alto}x
-                        {modulo.profundidad})
-                      </span>
-                      <button onClick={() => addModule(modulo)}>Add</button>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-
-            <div className="sidebar-container">
-              <h2>Texturas</h2>
-              <div className="textures-section">
-                <h3>Paredes</h3>
-                <div className="texture-options">
-                  {wallTextures.map((texture) =>
-                    texture.id === "default" ? (
-                      <IoBanOutline
-                      style={{color:'#aaa'}}
-                        key={texture.id}
-                        className={`texture-option ${
-                          wallTexture.id === texture.id ? "selected" : ""
-                        }`}
-                        onClick={() => setWallTexture(texture)}
-                      />
-                    ) : (
-                      <img
-                        key={texture.id}
-                        src={texture.maps.color}
-                        alt={texture.name}
-                        className={`texture-option ${
-                          wallTexture.id === texture.id ? "selected" : ""
-                        }`}
-                        onClick={() => setWallTexture(texture)}
-                      />
-                    )
-                  )}
-                </div>
-              </div>
-              <div className="texture-scale-section">
-                <label>
-                  <input
-                    type="range"
-                    min="0.1"
-                    max="2"
-                    step="0.01"
-                    value={textureScale}
-                    onChange={(e) => setTextureScale(Number(e.target.value))}
-                  />
-                  <span>{textureScale}</span>
-                </label>
-              </div>
-            </div>
-              <div
+                          <div
                 className="sidebar-container"
                 style={{
                   justifyContent: "center",
@@ -247,9 +173,7 @@ function Configurador() {
                 </div>
               </div>
 
-
-
-            {openings.map((opening) => (
+                          {openings.map((opening) => (
               <div className="openings-control-container" key={opening.id}>
                 <div
                   style={{
@@ -342,6 +266,87 @@ function Configurador() {
                 )}
               </div>
             ))}
+
+            <div className="sidebar-container">
+              <h2>Módulos disponibles</h2>
+              <Swiper
+                modules={[Navigation, Pagination]}
+                spaceBetween={10}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                className="modulos-carousel"
+              >
+                {availableModules.map((modulo) => (
+                  <SwiperSlide key={modulo.id}>
+                    <div className="module-slide-content">
+                      <span style={{position:'relative', top:'-16px'}}>{modulo.tipo}</span>
+                      <img
+                        style={{ borderRadius: "8px" }}
+                        src={modulo.imagen}
+                        alt={modulo.tipo}
+                        width="100"
+                        height="100"
+                      />
+                      <span>
+                        ({modulo.ancho}x{modulo.alto}x
+                        {modulo.profundidad})
+                      </span>
+                      <button onClick={() => addModule(modulo)}>Add</button>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            <div className="sidebar-container">
+              <h2>Texturas</h2>
+              <div className="textures-section">
+                <h3>Paredes</h3>
+                <div className="texture-options">
+                  {wallTextures.map((texture) =>
+                    texture.id === "default" ? (
+                      <IoBanOutline
+                      style={{color:'#aaa'}}
+                        key={texture.id}
+                        className={`texture-option ${
+                          wallTexture.id === texture.id ? "selected" : ""
+                        }`}
+                        onClick={() => setWallTexture(texture)}
+                      />
+                    ) : (
+                      <img
+                        key={texture.id}
+                        src={texture.maps.color}
+                        alt={texture.name}
+                        className={`texture-option ${
+                          wallTexture.id === texture.id ? "selected" : ""
+                        }`}
+                        onClick={() => setWallTexture(texture)}
+                      />
+                    )
+                  )}
+                </div>
+              </div>
+              <div className="texture-scale-section">
+                <label>
+                  <input
+                    type="range"
+                    min="0.1"
+                    max="2"
+                    step="0.01"
+                    value={textureScale}
+                    onChange={(e) => setTextureScale(Number(e.target.value))}
+                  />
+                  <span>{textureScale}</span>
+                </label>
+              </div>
+            </div>
+
+
+
+
+
           </div>
           </div>
 

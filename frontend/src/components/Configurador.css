@@ -46,6 +46,8 @@ button:hover {
   transition: max-width 0.1s ease-in-out;
   overflow: hidden;
     padding-bottom: 50px;
+    position: absolute;
+    z-index: 1000;
 
 }
 
@@ -78,7 +80,12 @@ button:hover {
 }
 
 .visualizacion-3d {
-  flex-grow: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
 
 .opening-controls {
@@ -103,6 +110,7 @@ button:hover {
   padding: 10px;
   border-radius: 8px;
   margin-top: 22px;
+  margin-bottom: 22px;
 }
 
 .divider {
@@ -141,7 +149,8 @@ button:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
+  justify-content: center;
 }
 
 .textures-section {
@@ -165,4 +174,11 @@ button:hover {
 
 .texture-option.selected {
   border-color: #007bff;
+}
+
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  width: 30px !important;
+  height: 30px !important;
+  font-size: 20px; 
 }
