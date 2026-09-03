@@ -11,9 +11,10 @@ export const useConfigurador = () => {
   const [textureScale, setTextureScale] = useState(1);
 
   useEffect(() => {
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:3000";
     const fetchModulos = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/modulos");
+        const response = await fetch(`${apiUrl}/api/modulos`);
         const data = await response.json();
         setAvailableModules(data);
       } catch (error) {
