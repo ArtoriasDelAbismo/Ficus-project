@@ -39,3 +39,7 @@ Thumbs.db
 
 # === Misc ===
 coverage/
+
+# === SQLite catalog data + uploaded images (per-environment, not source) ===
+backend/data/
+backend/uploads/
